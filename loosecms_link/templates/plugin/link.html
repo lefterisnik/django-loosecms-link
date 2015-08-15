@@ -1,0 +1,31 @@
+<div id="link-panel" class="panel panel-default">
+    <div id="link-heading" class="panel-heading"><strong>Κατηγορίες συνδέσμων</strong></div>
+    <div class="panel-body">
+        <div id="link-carousel" class="carousel slide" data-ride="carousel" data-interval="4000">
+            <div class="carousel-inner">
+                {% for linkscategory in linkscategories %}
+                {% if forloop.counter == 1 %}
+                <div class="item active">
+                {% else %}
+                <div class="item">
+                {% endif %}
+                {{ linkscategory.title }}
+                <ul>
+                    {% for link in links %}
+                    {% if link.category.pk == linkscategory.pk %}
+                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+            <a class="left carousel-control" href="#link-carousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#link-carousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+    </div>
+</div>
