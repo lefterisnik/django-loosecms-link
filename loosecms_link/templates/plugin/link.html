@@ -13,7 +13,7 @@
                 <ul>
                     {% for link in links %}
                     {% if link.category.pk == linkscategory.pk %}
-                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    <li><a href="{% url 'link-info' link.category.slug link.slug %}" target="{{ link.open }}">{{ link.title }}</a></li>
                     {% endif %}
                     {% endfor %}
                     </ul>

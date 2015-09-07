@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from .models import Link, LinkCategory, LinkManager
+from .models import Link, LinkCategory
 from .plugin import LinkPlugin
 
-admin.site.register(LinkManager, LinkPlugin)
-admin.site.register(LinkCategory)
-admin.site.register(Link)
+
+class LinkCategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title', )}
+
+admin.site.register(LinkCategory, LinkCategoryAdmin)
+admin.site.register(Link, LinkPlugin)
