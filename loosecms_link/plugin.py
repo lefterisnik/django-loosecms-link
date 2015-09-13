@@ -35,8 +35,6 @@ class LinkManagerPlugin(PluginModelAdmin):
 
 
 class LinkPlugin(PluginModelAdmin):
-    change_form_template = None
-    delete_confirmation_template = None
     model = Link
     name = _('Links')
     form = LinkForm
