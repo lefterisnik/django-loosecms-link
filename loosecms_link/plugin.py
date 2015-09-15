@@ -35,12 +35,16 @@ class LinkManagerPlugin(PluginModelAdmin):
 
 
 class LinkPlugin(PluginModelAdmin):
+    change_form_template = None
+    delete_confirmation_template = None
     model = Link
     name = _('Links')
     form = LinkForm
     plugin_cke = True
     template_cke = "plugin/ckeditor/link.html"
     prepopulated_fields = {'slug': ('title', )}
+    list_display = ('title', 'category', 'url', 'open')
+    search_fields = ('title', 'url')
 
     def get_urls(self):
         urls = super(LinkPlugin, self).get_urls()

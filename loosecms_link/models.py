@@ -28,6 +28,10 @@ class LinkCategory(models.Model):
     def __unicode__(self):
         return self.title
 
+    class Meta:
+        verbose_name = _('link category')
+        verbose_name_plural = _('link categories')
+
 
 class Link(Plugin):
     BLANK = '_blank'
@@ -55,5 +59,8 @@ class Link(Plugin):
     order = models.IntegerField(_('order'))
 
     def __unicode__(self):
-        #return self.title
         return "%s (%s)" %(self.title, self.type)
+
+    class Meta:
+        verbose_name = _('link')
+        verbose_name_plural = _('links')
