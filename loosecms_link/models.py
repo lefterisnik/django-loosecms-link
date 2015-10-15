@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
-from django.utils.translation import ugettext_lazy as _
 from django.db import models
+from django.db.models.signals import pre_save
+from django.utils.translation import ugettext_lazy as _
+
 from loosecms.models import Plugin
 
+from .signals import update_links
 
-#TODO: Add pre-save when one url change change the same url in database
 
 class LinkManager(Plugin):
     default_type = 'LinkManagerPlugin'
@@ -64,3 +66,5 @@ class Link(Plugin):
     class Meta:
         verbose_name = _('link')
         verbose_name_plural = _('links')
+
+pre_save.connect(update_links, Link)
