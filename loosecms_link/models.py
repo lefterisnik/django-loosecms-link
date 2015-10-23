@@ -58,8 +58,6 @@ class Link(Plugin):
                            help_text=_('Give the url of the link.'))
     open = models.CharField(_('open'), max_length=50, choices=choices, default=SELF,
                             help_text=_('Specify where to open the linked document'))
-    order = models.IntegerField(_('order'))
-
     def __unicode__(self):
         return "%s (%s)" %(self.title, self.type)
 
